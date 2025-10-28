@@ -11,7 +11,7 @@ import com.abhi.quizapp.services.QuestionServices;
 @RequestMapping("question")
 public class QuestionController {
 	@Autowired
-	QuestionServices questionservices;
+	private QuestionServices questionservices;
 	
 	@GetMapping("allQuestions")
 	public String getAllQuestions() {
