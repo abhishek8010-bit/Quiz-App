@@ -1,22 +1,25 @@
 package com.abhi.quizapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abhi.quizapp.model.Question;
 import com.abhi.quizapp.services.QuestionServices;
 
 @RestController 
 @RequestMapping("question")
 public class QuestionController {
 	@Autowired
-	private QuestionServices questionservices;
+	private QuestionServices questionServices;
 	
 	@GetMapping("allQuestions")
-	public String getAllQuestions() {
+	public List<Question> getAllQuestions() {
 		
-		return questionservices.getAllQuestions();
+		return questionServices.getAllQuestions();
 	}
 	
 
