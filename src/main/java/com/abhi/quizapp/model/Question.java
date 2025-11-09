@@ -16,15 +16,35 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id;
+	private Integer id;
+	private String difficultyLevel;
+	private String category;
 	private String questionTitle;
 	private String option1;
 	private String option2;
 	private String option3;
 	private String option4;
 	private String rightAnswer;
-	private String difficultyLevel;
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getDifficultyLevel() {
+		return difficultyLevel;
+	}
+	public void setDifficultyLevel(String difficultyLevel) {
+		this.difficultyLevel = difficultyLevel;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getQuestionTitle() {
 		return questionTitle;
 	}
@@ -61,12 +81,7 @@ public class Question {
 	public void setRightAnswer(String rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
-	public String getDifficultyLevel() {
-		return difficultyLevel;
-	}
-	public void setDifficultyLevel(String difficultyLevel) {
-		this.difficultyLevel = difficultyLevel;
-	}
+	
 	
 
 }
