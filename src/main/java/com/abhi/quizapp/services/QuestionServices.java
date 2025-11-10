@@ -22,6 +22,11 @@ public class QuestionServices {
 		return questionRepository.findQuestionByCategory(category);
 	}
 
+	public String addQuestion(Question question) {
+		 questionRepository.save(question);
+		 return "Success";
+	}
+
 	 
 
 }
