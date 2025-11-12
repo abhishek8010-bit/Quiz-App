@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.abhi.quizapp.model.Question;
 import com.abhi.quizapp.repository.QuestionRepository;
 
+
 @Service
 public class QuestionServices {
 	@Autowired
@@ -22,10 +23,33 @@ public class QuestionServices {
 		return questionRepository.findQuestionByCategory(category);
 	}
 
-	public String addQuestion(Question question) {
-		 questionRepository.save(question);
-		 return "Success";
+	public Question addQuestion(Question question) {
+		return questionRepository.save(question);
+		 
 	}
+
+	public Question updateQuestion(Integer id, Question newQuestion) {
+        Question user = questionRepository.findById(id).orElseThrow();
+        user.setDifficultyLevel(newQuestion.getDifficultyLevel());
+        user.setCategory(newQuestion.getCategory());
+        user.setQuestionTitle(newQuestion.getQuestionTitle());
+        user.setOption1(newQuestion.getOption1());
+        user.setOption2(newQuestion.getOption2());
+        user.setOption3(newQuestion.getOption3());
+        user.setOption4(newQuestion.getOption4());
+        user.setRightAnswer(newQuestion.getRightAnswer());
+        return questionRepository.save(user);
+    }
+
+	public void deleteQuestion(Integer id) {
+		 questionRepository.deleteById(id);;
+	}
+
+	
+
+	
+
+	
 
 	 
 
