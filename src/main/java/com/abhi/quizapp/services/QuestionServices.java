@@ -1,8 +1,11 @@
 package com.abhi.quizapp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -15,10 +18,16 @@ public class QuestionServices {
 	@Autowired
 	private QuestionRepository questionRepository;
 
-	public List<Question> getAllQuestions() {
-		return questionRepository.findAll();
+	public ResponseEntity<List<Question>> getAllQuestions() {
+		try {
+			return new ResponseEntity(questionRepository.findAll(), HttpStatus.OK);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
 	}
 
+	
 	public List<Question> getQuestionByCategory(String category) {
 		return questionRepository.findQuestionByCategory(category);
 	}
