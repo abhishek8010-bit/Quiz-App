@@ -30,12 +30,12 @@ public class QuestionController {
 	}
 	
 	@GetMapping("category/{category}")
-	public List<Question>getQuestionByCategory(@PathVariable String category){
+	public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
 		return questionServices.getQuestionByCategory(category);
 	}
 	
 	@PostMapping("add")
-	public Question addQuestion(@RequestBody Question question) {
+	public ResponseEntity<Question> addQuestion(@RequestBody Question question) {
 		return questionServices.addQuestion(question);
 	}
 	
@@ -52,9 +52,9 @@ public class QuestionController {
 	
 	
 	@DeleteMapping("delete/{id}")
-    public List<Void> deleteQuestion(@PathVariable Integer id) {
+    public void deleteQuestion(@PathVariable Integer id) {
    	  questionServices.deleteQuestion(id);
-   	  return null;
+   	  
    	  
 
 	

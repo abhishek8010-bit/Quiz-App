@@ -28,12 +28,22 @@ public class QuestionServices {
 	}
 
 	
-	public List<Question> getQuestionByCategory(String category) {
-		return questionRepository.findQuestionByCategory(category);
+	public ResponseEntity<List<Question>> getQuestionByCategory(String category) {
+		try {
+			return new ResponseEntity(questionRepository.findQuestionByCategory(category), HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
 	}
 
-	public Question addQuestion(Question question) {
-		return questionRepository.save(question);
+	public ResponseEntity<Question> addQuestion(Question question) {
+		try {
+			return new ResponseEntity(questionRepository.save(question), HttpStatus.CREATED);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity(new ArrayList<>(), HttpStatus.BAD_REQUEST);
 		 
 	}
 
@@ -51,7 +61,7 @@ public class QuestionServices {
     }
 
 	public void deleteQuestion(Integer id) {
-		 questionRepository.deleteById(id);;
+		questionRepository.deleteById(id);
 	}
 
 	
